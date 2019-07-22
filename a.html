@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Form Validation: Valid Zip Code </title>
+  <meta charset="UTF-8">
+	<meta name="keywords" content="application,app">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<!--<link rel="stylesheet" href="bootstrap.css"/>-->
+  <style>body{font-family:Verdana;}</style>
+  <script>
+
+$(document).ready(function()
+{   
+  $("#f_click").click(function(){ 
+      // $.ajax("login.html",{
+      //   beforeSend: function()
+      //   {
+      //     $("#r_box").html("Loading");
+      //   }
+      // })
+      // .fail(function(request,errorType,errorMessage){
+      //  $("#r_box").html(errorMessage);
+      // })
+      // .done(function(response){  
+      //   $("#r_box").html(response);
+      //   // alert("d");
+      // })
+      url="http://localhost/first/sri/user.php";
+       var dataString = "name=n9999999";
+        $.ajax({
+        url: url,
+        data: dataString,
+        type: 'GET',
+        success: function(dataa){
+        // alert("Data from Server" + JSON.stringify(dataa));
+        $("#r_box").html(dataa);
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+        alert( errorThrown);
+        }
+        })
+  });
+});
+ 
+</script>
+</head>
+  
+<body>
+
+  <div id="f_click">Click me</div>      
+  <br>
+  <div id="r_box"></div>
+  
+          
+</body>
+</html>

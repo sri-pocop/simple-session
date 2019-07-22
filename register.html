@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Srini</title>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="application,app">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="bootstrap.css"/>
+    <link href="style.css" rel="stylesheet"> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<script type="text/javascript">
+    var session_username="session_username";
+    var session_password="session_password";
+    var session_email="session_email";
+            function dofirst() {
+                var button = document.getElementById("submit");
+            button.addEventListener("click",savecrap,false);
+            }
+            function savecrap()
+            {
+            var username=document.getElementById("username").value;
+            var password=document.getElementById("password").value;
+            var email=document.getElementById("email").value;
+                    sessionStorage.setItem(session_username,username);
+                    sessionStorage.setItem(session_password,password);
+                    sessionStorage.setItem(session_email,email);
+                    // display(session_username,"ff");
+            }
+        function display(value,id)
+        {
+        var rightbox=document.getElementById(id);
+        var session_value=sessionStorage.getItem(value);
+        rightbox.innerHTML="Name of variable:" +session_value;
+        }
+        window.addEventListener("load",dofirst,false);
+    </script>
+</head>
+<body>
+
+<div class="loginmodal-container">
+     <!--style="background-color:grey">-->
+	<!--<br><br>-->
+
+<h1>Register</h1>
+	<form method="POST" action="reg_success.html">
+		<p><label for="username">UserName</label><br>
+			<input type="text" name="name" id="username" placeholder="User Name" class="form-control" required/>
+	
+		</p>
+        <!--<br>-->
+        <p><label for="email">Email</label><br>
+			<input type="email" name="email" id="email" placeholder="Email" class="form-control" required/>
+			
+		</p>
+        <!--<br>-->
+		<p><label for="password">Password</label><br>
+			<input type="password" name="password" id="password" pattern="(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{6,}"  class="form-control" placeholder="Password" required/>
+			
+		</p>
+		<br>
+		 <p><button type="submit" class="btn btn-success" id="submit" name="register">Register</button>
+         <input class="btn btn-dark" type="reset" id="clear" value="Clear"/>
+         <div class="login-help">
+            Already registered. <strong><a style="color:blue;" href="login.html">login</a></strong></p>
+        </div>
+	</form>	
+</div>
+<div id="ff"></div>
+</body>
+</html>

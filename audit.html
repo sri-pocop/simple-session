@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Srini</title>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="application,app">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="bootstrap.css"/> 	
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+    // document.getElementById("manager_selection").addEventListener("onchange",manager_change_function(this.value), false);
+   
+        
+        
+ 
+    </script>
+
+</head>
+<body class="container">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item ">
+      <a class="nav-link" href="home.html">Home</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="audit.html">Audit</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="myprofile.html">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="contact.html">Help</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="login.html">Logout</a>
+    </li>
+  </ul>
+</nav>
+<br>
+<h3 align="center">Technical Audit</h3>
+ <fieldset>
+  <legend>Audit Details</legend>
+    <div class="row">
+    <div class="col-sm-4">
+        <label for="auditee_name">Name: </label>
+            <input type="text" id="auditee_name">
+        <br>
+        <label for="auditee_emp_code">Employee ID: </label>
+            <input type="text" id="auditee_emp_code">
+        <label for="auditor_name">Auditor Name: </label>
+            <input type="text" id="auditor_name">
+    </div>
+    <div class="col-sm-3">
+        <label for="s_date">Start Date: </label>
+            <input type="date" id="s_date"><br>
+        <label for="e_date">End Date: </label>
+            <input type="date" id="e_date"><br>
+        Audit Completed: 
+        <label for="audit_status_yes">Yes</label>
+            <input type="radio" name="audit_status" id="audit_status_yes">
+        <label for="audit_status_no">No</label>
+            <input type="radio" name="audit_status" id="audit_status_no">
+    </div>
+    <div class="col-sm-5">
+        <label for="manager_selection">Reporting Manager: </label>
+            <select name="manager_selection" id="manager_selection" onchange="manager_change_function(this.value)"></select><br>
+        <label for="lead_selection">Leads: </label>
+            <select name="lead_selection" id="lead_selection"></select>  
+    <script>
+        let selectBox_manager = document.getElementById('manager_selection');
+
+        for(var i = 0, l = options_manager.length; i < l; i++){
+        var option = options_manager[i];
+        selectBox_manager.options.add( new Option(option.text, option.value) );
+        }
+    </script>
+    <script>
+        let selectBox_lead = document.getElementById('lead_selection');
+        
+        
+    </script>      
+    </div>
+  </div>
+ </fieldset>
+ <fieldset>
+        <div class="row">
+        <div class="col-sm-6">
+            <strong>Questions</strong><br>
+            <div id="section_questions"></div>
+            <script>
+                let selectBox_questions = document.getElementById('section_questions');
+
+                //  window.onload=function () 
+                var result_text="";
+                var choices_text="";
+                var comments_text="";
+                for(var i = 0, l = questions.length; i < l; i++)
+                {
+                    t=1;
+                    var option = questions[i];
+                    var temp=option.section + ". " + option.question + "<br>";
+                    result_text=result_text + temp;
+                    
+                    for(var j = 0, li = questions_list.length; j < li; j++)
+                    {
+                        var option_l = questions_list[j];
+                        if(option.section == option_l.section)
+                        {
+                            var temp="&nbsp;&nbsp;&nbsp;" + option.section + "." + t + "." + option_l.sub_question + "<br>";
+                            result_text=result_text + temp;
+                            var choice_name="choice_" + option.section + "_" + t;
+                            var choice_id_y="choice_" + option.section + "_" + t +"_y";
+                            var choice_id_n="choice_" + option.section + "_" + t +"_n";
+                            if(t == 1)
+                            {
+                                choices_text = choices_text + inp(choice_name + "_master",choice_id_y + "_master" , 1) + "  &nbsp;&nbsp;&nbsp;&nbsp;  "+ inp(choice_name + "_master",choice_id_n + "_master" , 1) + "<br>";
+                                comments_text = comments_text + "<br>";
+                            }
+                            choices_text=choices_text + inp(choice_name,choice_id_y) + "  &nbsp;&nbsp;&nbsp;&nbsp;  " + inp(choice_name,choice_id_n) + "<br>";
+                            comments_text = comments_text + com(choice_name + "_comments");//    + "<br>";
+                            t++;
+                        }
+                        
+                    }
+                }
+                selectBox_questions.innerHTML=result_text;
+            </script>
+        </div>
+        <div class="col-sm-3">
+            <strong>Yes &nbsp; No</strong>
+            <div id="section_answer"></div>
+            <script>
+                let selectBox_choices = document.getElementById('section_answer');
+               
+                selectBox_choices.innerHTML = choices_text;
+                
+                
+            </script>
+        </div>
+        <div class="col-sm-3">
+            <strong>Comments</strong><br>
+            <div id="section_comments"></div>
+            <script>
+                let selectBox_comments = document.getElementById('section_comments');
+                selectBox_comments.innerHTML = comments_text;
+                
+            </script>
+        </div>
+        </div>
+ </fieldset>
+ <fieldset>
+     <div class="row">
+        <div class="col-sm-6">
+            <strong>Result Based in Response, Score</strong>
+        </div>
+        <div class="col-sm-3">
+            <div id="result_score"></div>
+        </div>
+        <div class="col-sm-3">
+            <input type="button" name="get_result" onclick="get_results()" value="Get Result">
+        </div>
+     </div>
+ </fieldset>
+</body>
+</html>

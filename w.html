@@ -1,0 +1,57 @@
+<!--<!doctype html>-->
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>Reservation</title>
+	<!--<meta name="description" content="The HTML5 Herald">
+	<meta name="author" content="SitePoint">-->
+
+	<!--<link rel="stylesheet" href="css/styles.css?v=1.0">-->
+
+  	<script>
+		function writeToFile(item, name, time)
+		{
+			alert("Hello " + item);
+			var fso = new ActiveXObject("Scripting.FileSystemObject");
+			var fh = fso.OpenTextFile("E:/labChart/etc/reserve.text", 8);
+			fh.WriteLine(item);
+			fh.Close();
+		}
+
+		function readFile()
+		{
+			var fso = new ActiveXObject("Scripting.FileSystemObject");
+			var fh = fso.OpenTextFile("reserve.text", 1, false, 0);
+			var lines = "";
+			while (!fh.AtEndOfStream) {
+				lines += fh.ReadLine() + "\r";
+			}
+			fh.Close();
+			return lines;
+		}
+	</script>
+    </head>
+	<body>
+		Reservation
+	  	<br>
+	  	<form>
+		  	  Item:
+		  	  <br>
+			  <input type="text" name="item" id="item">
+			  <br>
+			  Name:
+			  <br>
+			  <input type="text" name="name" id="name">
+			  <br>
+			  Time:
+			  <br>
+			  <input type="date" name="time" id="time">
+			  <br>
+			  <br>
+			  <input type="submit" value="Submit" onclick="writeToFile(document.getElementById('item').value, document.getElementById('name').value, document.getElementById('time').value)">
+		</form>
+  		<!--/*<script src="js/scripts.js"></script>*/-->
+	</body>
+    </html>

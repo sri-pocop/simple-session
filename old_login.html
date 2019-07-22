@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Srini</title>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="application,app">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="bootstrap.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<script>
+		function form_check(myform)
+		{
+			if (myform.username.value == "" || myform.password.value == null)
+			{
+			alert("Name is mandatory");
+			return false;
+			}
+				if(myform.username.value == "" || myform.password.value == null)
+				{
+				alert("Password is mandatory");
+				return false;
+				}
+				else{
+				return true;
+				}
+		}
+	</script>
+</head>
+<body>
+
+<div class="container">
+	 <!--style="background-color:grey">-->
+	<br><br>
+	<h1>Login to continue</h1>
+	<form method="POST" name="form_data" action="home.html" onSubmit="return form_check(form_data)">
+		<p><label for="username">UserName</label><br>
+			<input type="text" name="username" id="username" placeholder="User Name" class="form-control" required/>
+			
+		</p><br>
+		<p><label for="password">Password</label><br>
+			<input type="password" name="password" id="password" pattern="(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{6,}"  class="form-control" placeholder="Password" required/>
+			
+		</p>
+		<br>
+		<p>
+			<input class="btn btn-dark" type="reset" id="clear" value="Clear"/>
+			<input class="btn btn-success" type="submit" id="sub" value="Login"/><br>
+		  Not registered.. Register to continue. <a href="register.html">Register</a></p>
+	</form>
+	
+</div>
+<div id="ff"></div>
+</body>
+</html>

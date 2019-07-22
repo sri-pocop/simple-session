@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Srini</title>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="application,app">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="bootstrap.css"/>  	
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+	$("#c_update").click(function(){
+    $("#update").css("display","block")
+  }),
+  $("#c_update").click(function(){
+    $("#view").css("display","none")
+  })
+});
+
+$(document).ready(function(){
+	$("#c_view").click(function(){
+    $("#view").css("display","block")
+  }),
+  $("#c_view").click(function(){
+    $("#update").css("display","none")
+  })
+});
+  </script>
+</head>
+<body class="container">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" href="home.html">Home</a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link" href="audit.html">Audit</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="myprofile.html">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="contact.html">Help</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="login.html">Logout</a>
+    </li>
+  </ul>
+</nav>
+<br>
+<div>
+  <button class="btn bg-secondary" id="c_update">Update</button>
+  <button class="btn bg-secondary" id="c_view">View</button>
+</div>
+<br>
+<div id="update" style="display:block">
+<form>
+  <p>
+    <label for="auditor">Auditor : </label>
+    <input type="text" name="auditor" id="auditor">
+  </p><p>
+    <label for="auditiee">Auditiee : </label>
+    <input type="text" name="auditiee" id="auditiee">
+  </p><p>
+    <label for="comments">Comments : </label>
+    <textarea name="comments" id="comments"></textarea>
+  </p><p>
+    <label for="observation">Observation : </label>
+    <textarea name="observation" cols="10" rows="1" id="observation"></textarea>
+  </p>
+  <input class="btn btn-success" type="submit" value="save">
+  <input class="btn btn-dark" type="reset" value="Clear">
+</form>
+</div>
+<div id="view" style="display:none">
+  <table class="table table-striped">
+    <thead><tr >
+      <th>
+        Auditor
+      </th>
+      <th>
+        Auditiee
+      </th>
+      <th>
+        Comments
+      </th>
+      <th>
+        Observation
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>test
+      </td>
+      <td>test
+      </td>
+      <td>tesst
+      </td>
+      <td>test
+      </td>
+    </tr>
+    <tr>
+      <td>test1
+      </td>
+      <td>test1
+      </td>
+      <td>tesst1
+      </td>
+      <td>test1
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  </div>
+ <!--<fieldset>
+  <legend>Persocvxh fdghfdgh fdgh fdhgfdgh fgh nalia:</legend>
+  Name: <input type="text"><br>
+  Email: <input type="text"><br>
+  Date of birth: <input type="text">
+ </fieldset>-->
+</body>
+</html>
